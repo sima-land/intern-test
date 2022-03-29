@@ -1,0 +1,19 @@
+{% if recommendations %}
+<h2>List of recommendations for user {{ user_id }}</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Item  ID</th>
+            <th>Title</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for rec in recommendations %}
+            <tr>
+                <td>{{ rec.item_id }}</td>
+                <td>{{ rec.title }}</td>
+            </tr>
+        {% endfor %}
+    <tbody>
+</table>
+{% endif %}
