@@ -53,7 +53,7 @@ class PopularRecommender:
         return df
 
     @staticmethod
-    def build_model(last_n_days=30):
+    def build_model():
         # создаем и обучаем модель
         train = PopularRecommender.get_df_from_csv(
             "data/interactions.csv", parse_dates=["last_watch_dt"]
