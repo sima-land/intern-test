@@ -1,4 +1,3 @@
-import pickle
 import random
 
 import pandas as pd
@@ -13,6 +12,7 @@ class PopularRecommender:
         self.dt_column = dt_column
         self.recommendations = []
         self.recommendations_metainfo = []
+        self.users = []
 
     def fit(self, df):
         self._build_model(df)
@@ -43,6 +43,14 @@ class PopularRecommender:
         users_df = PopularRecommender.get_df_from_csv("data/users.csv")
         self.users = users_df["user_id"].unique()
 
+    def recommend_for_user(self, user_id: int, shuffle=False):
+        if user_id not in self.users:
+            raise KeyError()
+        recs = self.recommendations_metainfo
+        if shuffle:
+            random.shuffle(recs)
+        return recs
+
     @staticmethod
     def get_df_from_csv(title, parse_dates=[]):
         df = pd.read_csv(title, parse_dates=parse_dates)
@@ -56,15 +64,4 @@ class PopularRecommender:
         )
         pop_model = PopularRecommender(dt_column="last_watch_dt")
         pop_model.fit(train)
-        # cохраняем модель
-        pickle.dump(pop_model, open("model/model_popular.pkl", "wb"))
-
-    @staticmethod
-    def recommend_for_user(user_id: int, shuffle=False):
-        loaded_model = pickle.load(open("model/model_popular.pkl", "rb"))
-        if user_id not in loaded_model.users:
-            raise KeyError()
-        recs = loaded_model.recommendations_metainfo
-        if shuffle:
-            random.shuffle(recs)
-        return recs
+        return pop_model
