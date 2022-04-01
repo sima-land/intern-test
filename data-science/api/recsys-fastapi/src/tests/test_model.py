@@ -1,5 +1,3 @@
-import pytest
-
 from app.model import PopularRecommender
 
 

@@ -1,5 +1,3 @@
-import pickle
-
 from fastapi import FastAPI, Form, Request, HTTPException
 from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
