@@ -19,13 +19,6 @@ class PopularRecommender:
         self._load_metainfo()
         self._load_userinfo()
 
-    def recommend(self, users=None, N=10):
-        recs = self.recommendations[:N]
-        if users is None:
-            return recs
-        else:
-            return list(islice(cycle([recs]), len(users)))
-
     def _build_model(self, df):
         min_date = df[self.dt_column].max().normalize() - pd.DateOffset(days=self.days)
         self.recommendations = (
