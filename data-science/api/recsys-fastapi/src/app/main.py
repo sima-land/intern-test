@@ -15,7 +15,10 @@ def read_form():
 
 @app.get("/form")
 async def form_get(request: Request):
-    return templates.TemplateResponse("form.html", context={"request": request})
+    return templates.TemplateResponse(
+        "form.html",
+        context={"request": request}
+    )
 
 
 @app.post("/form")

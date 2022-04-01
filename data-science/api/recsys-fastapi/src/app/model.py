@@ -5,7 +5,8 @@ import pandas as pd
 
 
 class PopularRecommender:
-    def __init__(self, max_items=10, days=7, item_column="item_id", dt_column="date"):
+    def __init__(self, max_items=10, days=7,
+                 item_column="item_id", dt_column="date"):
         self.max_items = max_items
         self.days = days
         self.item_column = item_column
@@ -19,7 +20,8 @@ class PopularRecommender:
         self._load_userinfo()
 
     def _build_model(self, df):
-        min_date = df[self.dt_column].max().normalize() - pd.DateOffset(days=self.days)
+        min_date = df[self.dt_column].max().normalize() \
+                   - pd.DateOffset(days=self.days)
         self.recommendations = (
             df.loc[df[self.dt_column] > min_date, self.item_column]
             .value_counts()
@@ -31,9 +33,11 @@ class PopularRecommender:
         items_df = PopularRecommender.get_df_from_csv("data/items.csv")
         recs_df = pd.DataFrame(self.recommendations, columns=["item_id"])
         df = pd.merge(
-            recs_df, items_df, left_on="item_id", right_on="item_id", how="left"
+            recs_df, items_df,
+            left_on="item_id", right_on="item_id", how="left"
         )
-        self.recommendations_metainfo = df[["item_id", "title"]].to_dict("records")
+        self.recommendations_metainfo = \
+            df[["item_id", "title"]].to_dict("records")
 
     def _load_userinfo(self):
         users_df = PopularRecommender.get_df_from_csv("data/users.csv")
