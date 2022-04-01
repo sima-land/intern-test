@@ -1,6 +1,5 @@
 import pickle
 import random
-from itertools import cycle, islice
 
 import pandas as pd
 
