@@ -1,19 +1,9 @@
-import pickle
-
 from fastapi import FastAPI, Form, Request, HTTPException
 from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
 
 from app.model import PopularRecommender
-
-
-def load_model(path):
-    return pickle.load(open(path, "rb"))
-
-
-def save_model(model, path):
-    pickle.dump(model, open(path, "wb"))
-
+from app.utils import load_model, save_model
 
 model_file = "model/model_popular.pkl"
 app = FastAPI()
