@@ -7,4 +7,3 @@ def load_model(path):
 
 def save_model(model, path):
     pickle.dump(model, open(path, "wb"))
-Test
