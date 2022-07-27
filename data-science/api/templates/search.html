@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>list of recommendations</title>
+</head>
+<body>
+    {% for table in tables %}
+        {{ table|safe }}
+    {% endfor %}
+    <form action="/" method="post">
+       <button type="submit" class="position_center borders">Назад к поиску</button>
+    </form>
+</body>
+</html>
