@@ -18,10 +18,10 @@ class InferenceModel:
     def data_preparation(path: str):
 
         dir_name = os.path.dirname(__file__)
-        train_users = pd.read_csv(os.path.join(dir_name + path + "/train_users.csv"))
-        train_items = pd.read_csv(os.path.join(dir_name + path + "/train_items.csv"))
-        train_interactions = pd.read_csv(os.path.join(dir_name + path + "/train_interactions.csv"))
-        items_df = pd.read_csv(os.path.join(dir_name + path + "/items.csv"))
+        train_users = pd.read_csv(os.path.join(dir_name, path, "/train_users.csv"))
+        train_items = pd.read_csv(os.path.join(dir_name, path, "/train_items.csv"))
+        train_interactions = pd.read_csv(os.path.join(dir_name, path, "/train_interactions.csv"))
+        items_df = pd.read_csv(os.path.join(dir_name, path, "/items.csv"))
 
         interactions_matrix = np.zeros((train_interactions.uid.nunique(),
                                         train_interactions.iid.nunique()))
