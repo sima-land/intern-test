@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Recommender system</title>
+</head>
+<body>
+<h1>Поиск подборки фильмов</h1>
+  {% if error %}
+    <p class=error><strong>Error:</strong> {{ error }}
+  {% endif %}
+    <form action="/search" method="post">
+       <input class="position_center borders" type="text" placeholder="Введите user_id", name="user_id">
+       <button type="submit" class="position_center borders">Поиск</button>
+    </form>
+</body>
