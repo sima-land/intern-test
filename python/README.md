@@ -3,8 +3,8 @@
 1. Использовать python для выполнения задания
 2. Применить для разработки API сервиса фреймворк FastAPI
 3. Создать виртуальное окружение для проекта
-4. Установить вспомогательную библиотеку transformers
-5. Запускать и тестировать проект через IDE
+4. Использовать библиотеки FastAPI, torch, transformers, uvicorn
+5. Для запуска FastAPI использовать uvicorn
 
 ## Задание
 1. Встроить модель (https://huggingface.co/Aniemore/rubert-tiny2-russian-emotion-detection) в API сервис. Модель выполняет анализ тональности (sentiment analysis) предложения.
